@@ -15,7 +15,7 @@ const About = () => {
       <div className="max-w-[1100px] mx-auto px-6 w-full">
         <motion.div {...fadeInUp} className="mb-12">
           <h2 className="text-[32px] font-bold mb-3 accent-text tracking-tight">About Me</h2>
-          <p>Passionate about solving design challenges.</p>
+          <p></p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -24,7 +24,7 @@ const About = () => {
               <FiBriefcase className="accent-text" size={24} />
               <h3 className="font-bold tracking-tight">Background</h3>
             </div>
-            <p>Educated at Depot College, I've expanded my technical progress through intensive training at Broadway Infosys. I'm driven by a passion for contributing to professional teams.</p>
+            <p>I have completed training at Broadway Infosys, where I specialized in building responsive,  web applications. With a strong foundation in React and Tailwind CSS, I am passionate about contributing high-performance, accessible code to collaborative projects.</p>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="p-8 glass">
             <div className="flex items-center gap-3 mb-4">
