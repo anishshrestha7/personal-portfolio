@@ -49,7 +49,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="h-full w-full flex items-center overflow-hidden">
+    <section className="w-full flex items-center">
       <div className="max-w-[1100px] mx-auto px-6 w-full">
         <motion.div {...fadeInUp} className="mb-12">
           <h2 className="text-[32px] font-bold mb-3 accent-text tracking-tight">Skills</h2>

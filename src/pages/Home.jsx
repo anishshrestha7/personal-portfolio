@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
 import HeroImage from '../components/HeroImage';
 import TypewriterEffect from '../components/TypewriterEffect';
 
 const Home = () => {
   return (
-    <section className="h-full w-full flex items-center overflow-hidden">
+    <section className="w-full flex items-center">
       <div className="max-w-[1100px] mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
         <HeroImage />
 
@@ -32,7 +31,7 @@ const Home = () => {
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anikazeani7@gmail.com" target="_blank" rel="noreferrer" className="inline-block hover:text-primary transition-all duration-300 hover:-translate-y-2"><FiMail size={24} /></a>
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-start">
-            <Link to="/projects" className="btn-primary flex items-center justify-center w-full md:w-auto ">View Projects</Link>
+            <a href="#projects" className="btn-primary flex items-center justify-center w-full md:w-auto ">View Projects</a>
             <a href="/Anishwebdev-intern.pdf" download className="btn-secondary flex items-center justify-center w-full md:w-auto pe-4">Download CV <span className='ps-2'><FiDownload size={24}/></span></a>
           </div>
         </motion.div>

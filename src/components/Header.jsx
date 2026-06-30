@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const Header = ({ activeSection, toggleTheme, theme }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,11 +16,11 @@ const Header = ({ activeSection, toggleTheme, theme }) => {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/', id: 'home' },
-    { name: 'About', href: '/about', id: 'about' },
-    { name: 'Skills', href: '/skills', id: 'skills' },
-    { name: 'Projects', href: '/projects', id: 'projects' },
-    { name: 'Contact', href: '/contact', id: 'contact' },
+    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   const closeMenu = () => setIsMobileMenuOpen(false);
@@ -33,18 +32,18 @@ const Header = ({ activeSection, toggleTheme, theme }) => {
           <div className="flex justify-between items-center w-full">
             
             {/* Logo / Name - Top Left */}
-            <Link to="/" className="text-[22px] font-extrabold tracking-tight text-primary  hover:text-gray-600  transition-colors cursor-pointer z-[110]">
+            <a href="#home" className="text-[22px] font-extrabold tracking-tight text-primary  hover:text-gray-600  transition-colors cursor-pointer z-[110]">
               Anish Shrestha
-            </Link>
+            </a>
 
             {/* Nav / Controls - Top Right */}
             <div className="flex items-center gap-4 md:gap-6">
               {/* Desktop Nav */}
               <nav className="hidden md:flex gap-8 items-center">
                 {navigation.map((item) => (
-                  <Link
+                  <a
                     key={item.id}
-                    to={item.href}
+                    href={item.href}
                     className={`relative text-[14px] font-medium py-1  transition-colors duration-300
                       ${activeSection === item.id ? 'text-primary' : 'text-textSecondary hover:text-primary'}
                       after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:bg-primary after:transition-all after:duration-300
@@ -52,7 +51,7 @@ const Header = ({ activeSection, toggleTheme, theme }) => {
                     `}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
                 {/* ThemeToggle on the right side of contact button */}
                 <ThemeToggle toggleTheme={toggleTheme} theme={theme} />
@@ -100,9 +99,9 @@ const Header = ({ activeSection, toggleTheme, theme }) => {
             >
               <div className="flex flex-col items-start gap-8 flex-1 pb-32">
                 {navigation.map((item) => (
-                  <Link
+                  <a
                     key={item.id}
-                    to={item.href}
+                    href={item.href}
                     onClick={closeMenu}
                     className={`relative text-2xl font-bold transition-all duration-300 py-2 inline-block
                       ${activeSection === item.id ? 'text-primary' : 'text-textSecondary hover:text-primary'}
@@ -111,7 +110,7 @@ const Header = ({ activeSection, toggleTheme, theme }) => {
                     `}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </motion.div>

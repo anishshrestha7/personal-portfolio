@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -9,25 +10,60 @@ import Contact from './pages/Contact';
 import './index.css';
 
 // A wrapper component to pass props to Layout and handle theme initialization
+const MainContent = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <section id="home" className="min-h-[calc(100vh-80px)] flex items-center">
+        <Home />
+      </section>
+      <section id="about" className="min-h-screen py-20 flex items-center">
+        <About />
+      </section>
+      <section id="skills" className="min-h-screen py-20 flex items-center">
+        <Skills />
+      </section>
+      <section id="projects" className="min-h-screen py-20 flex items-center">
+        <Projects />
+      </section>
+      <section id="contact" className="min-h-screen py-20 flex items-center">
+        <Contact />
+      </section>
+    </motion.div>
+  );
+};
+
 const AppContent = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [theme, setTheme] = useState('light');
-  const location = useLocation();
-
+  
   useEffect(() => {
-    // By default, light mode does not require 'dark' class on HTML.
-    document.documentElement.classList.remove('dark');
+    const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    // Determine active section from pathname
-    const path = location.pathname;
-    if (path === '/') setActiveSection('home');
-    else if (path === '/about') setActiveSection('about');
-    else if (path === '/skills') setActiveSection('skills');
-    else if (path === '/projects') setActiveSection('projects');
-    else if (path === '/contact') setActiveSection('contact');
-  }, [location]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -42,11 +78,9 @@ const AppContent = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout activeSection={activeSection} toggleTheme={toggleTheme} theme={theme} />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="skills" element={<Skills />} />
-        <Route path="projects" element={<Projects />} />
-        <Route path="contact" element={<Contact />} />
+        <Route index element={<MainContent />} />
+        {/* Redirect other paths to home to allow deep linking if needed, or just handle at root */}
+        <Route path="*" element={<MainContent />} />
       </Route>
     </Routes>
   );

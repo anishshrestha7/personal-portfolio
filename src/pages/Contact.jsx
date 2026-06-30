@@ -11,7 +11,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="h-full w-full flex items-center overflow-hidden">
+    <section className="w-full flex items-center">
       <div className="max-w-[1100px] mx-auto px-6 w-full">
         <motion.div {...fadeInUp} className="p-12 glass">
           <h2 className="text-[32px] font-bold mb-6 accent-text tracking-tight">Let's Talk</h2>
