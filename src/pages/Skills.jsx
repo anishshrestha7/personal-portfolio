@@ -1,43 +1,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCode, FiLayout, FiLayers } from 'react-icons/fi';
-import { 
+import {
   SiJavascript, SiHtml5, SiCss, SiReact, SiNextdotjs,
   SiTailwindcss, SiSass, SiBootstrap,
-  SiGit, SiGithub, SiVercel, SiFigma 
+  SiGit, SiGithub, SiVercel, SiFigma
 } from 'react-icons/si';
 
 const Skills = () => {
   const skillGroups = [
-    { 
-      category: "Web Tech", 
-      icon: <FiCode size={20} />, 
+    {
+      category: "Web Tech",
+      icon: <FiCode size={20} />,
       skills: [
         { name: "JavaScript", icon: <SiJavascript /> },
         { name: "HTML5", icon: <SiHtml5 /> },
         { name: "CSS3", icon: <SiCss /> },
         { name: "React", icon: <SiReact /> },
         { name: "Next JS", icon: <SiNextdotjs /> }
-      ] 
+      ]
     },
-    { 
-      category: "Frameworks", 
-      icon: <FiLayout size={20} />, 
+    {
+      category: "Frameworks",
+      icon: <FiLayout size={20} />,
       skills: [
         { name: "Tailwind", icon: <SiTailwindcss /> },
         { name: "SASS", icon: <SiSass /> },
         { name: "Bootstrap", icon: <SiBootstrap /> }
-      ] 
+      ]
     },
-    { 
-      category: "Workflow", 
-      icon: <FiLayers size={20} />, 
+    {
+      category: "Workflow",
+      icon: <FiLayers size={20} />,
       skills: [
         { name: "Git", icon: <SiGit /> },
         { name: "Github", icon: <SiGithub /> },
         { name: "Vercel", icon: <SiVercel /> },
         { name: "Figma", icon: <SiFigma /> }
-      ] 
+      ]
     },
   ];
 
